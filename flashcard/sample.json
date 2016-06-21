@@ -1,0 +1,10 @@
+{
+	"b in hex" : "1011",
+	"a in hex" : "1010",
+	"c in hex" : "1100",
+	"d in hex" : "1101",
+	"e in hex" : "1110",
+	"f in hex" : "1111",
+	"a in morse" : ".-",
+	"1 in morse" : ".----"
+}
