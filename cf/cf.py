@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import login
 import argparse
-import status
 import sys
-import utils
+
+import cflib.login as login
+import cflib.status as status
+import cflib.utils as utils
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -13,7 +14,7 @@ if __name__ == "__main__":
     parser.add_argument("-m", "--mode", default="p", help="optional, by default problem set, problem=p, gym=g, contest=c")
     parser.add_argument("-l", "--language_code", default="50", help="cf language code if you know it")
     parser.add_argument("-f", "--file_name", help="cf language code if you know it")
-    parser.add_argument("-i", "--id", help="cf problem set or contest id")
+    parser.add_argument("-i", "--id", help="cf problem set id, gym id or contest id")
     parser.add_argument("-x", "--index", help="cf problem index A/B/C/D/E")
     args = parser.parse_args()
 
@@ -45,7 +46,7 @@ if __name__ == "__main__":
             index = args.index
 
         if args.file_name is None:
-            print("Please specify a file name. (example: -f r2d2.cc")
+            print("Please specify a file name. (example: -f r2d2.cc)")
             sys.exit(1)
         else:
             file_name = args.file_name
