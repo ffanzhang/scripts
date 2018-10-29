@@ -13,7 +13,7 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--password", default="", help="cf password")
     parser.add_argument("-m", "--mode", default="p", help="optional, by default problem set, problem=p, gym=g, contest=c")
     parser.add_argument("-l", "--language_code", default="50", help="cf language code if you know it")
-    parser.add_argument("-f", "--file_name", help="cf language code if you know it")
+    parser.add_argument("-f", "--file_name", help="cf file name if you know it")
     parser.add_argument("-i", "--id", help="cf problem set id, gym id or contest id")
     parser.add_argument("-x", "--index", help="cf problem index A/B/C/D/E")
     args = parser.parse_args()
