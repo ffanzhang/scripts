@@ -56,8 +56,8 @@ class TestLogin(unittest.TestCase):
                            cookies=self._cookies)
         try:
             session = auth.login("username", "password")
-            self.fail("Expected login to fail")
         except:
+            self.fail("Expected login to succeed")
             pass
 
 if __name__ == '__main__':
