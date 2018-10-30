@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse
-import sys
-from datetime import datetime
 import getpass
+import sys
 
 import cflib.auth as auth
 import cflib.status as status

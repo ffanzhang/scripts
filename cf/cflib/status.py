@@ -1,6 +1,6 @@
 import requests
-from time import sleep
 import sys
+from time import sleep
 from .config import STATUS_URL
 
 class BadRequestException(Exception):
