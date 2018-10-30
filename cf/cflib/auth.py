@@ -43,6 +43,16 @@ def cookies_expired(cookies):
             return True
     return False
 
+def valid_cookies(cookies):
+    if cookies is None:
+        return False
+    try:
+        cookie_jar = cookies.get_dict()
+        return 'X-User-Sha1' in cookie_jar
+    except:
+        return False
+    return False
+
 def session_from_cookies(cookies):
     session = requests.Session()
     session.cookies.update(cookies)
@@ -69,6 +79,9 @@ def login(handle, password):
     login_data[LOGIN_PASSWORD_NAME] = password 
     res = session.post(LOGIN_URL, files=login_data)
     assert res.status_code == 200, "Error submitting login data"
+    if not valid_cookies(session.cookies):
+        raise Exception
+
     return session
 
 def submit(session, id, index, lang_id, file_name, mode):

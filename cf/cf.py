@@ -63,12 +63,17 @@ if __name__ == "__main__":
                 ext = ext[-1]
                 language_code = utils.guess_language_code(ext)
 
-        cookies = auth.load_cookies()
         session = None
-        if auth.cookies_expired(cookies):
+        cookies = auth.load_cookies()
+        if auth.cookies_expired(cookies) or not auth.valid_cookies(cookies):
             # re-enter credentials if cookies about to expire
+            auth.clear_cookies()
             password = getpass.getpass()
-            session = auth.login(args.username, password)
+            try:
+                session = auth.login(args.username, password)
+            except:
+                print("Error logging in")
+                sys.exit(1)
             auth.save_cookies(session)
             auth.save_last_user(args.username)
         else:
