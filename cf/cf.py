@@ -38,20 +38,29 @@ if __name__ == "__main__":
         if last_user is not None and last_user != args.username:
             auth.clear_cookies()
 
-        if args.id is None or args.index is None or args.file_name is None:
-            parser.print_help()
-            print("One or more of problem/gym/contest id, index or file name is missing")
-            sys.exit(1)
-        else:
-            id = args.id
-            index = args.index
-            file_name = args.file_name
-            
+        id, index, file_name = args.id, args.index, args.file_name
+        if args.id == None:
+            print("Problem set id not specified, guessing")
+            id = utils.guess_problem_set_id(args.file_name)
+            if id is None:
+                print("Failed to guess a problem set id")
+            else:
+                print("Using id = {0}".format(id))
+        if args.index is None:
+            print("Problem index not specified, guessing")
+            index = utils.guess_problem_index(args.file_name)
+            if index is None:
+                print("Failed to guess a problem set id")
+            else:
+                print("Using index = {0}".format(index))
+        for item in [id, index, file_name]:
+            if item is None:
+                parser.print_help()
+                print("One or more of problem/gym/contest id, index or file name is missing")
+                sys.exit(1)
+        
         if args.language_code is None:
-            ext = file_name.split('.')
-            if len(ext) >= 2:
-                ext = ext[-1]
-                language_code = utils.guess_language_code(ext)
+            language_code = utils.guess_language_code(file_name)
 
         session = None
         cookies = auth.load_cookies()

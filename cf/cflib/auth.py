@@ -87,6 +87,7 @@ def login(handle, password):
 def submit(session, id, index, lang_id, file_name, mode):
     url = "" 
     mode = mode.lower().strip()
+    index = index.upper()
     if mode == 'p':
         url = SUBMIT_URL
     elif mode == 'g':

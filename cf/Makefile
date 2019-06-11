@@ -9,4 +9,3 @@ clean:
 	yes | pip3 uninstall cflib
 test:
 	python3 -m unittest discover
-
