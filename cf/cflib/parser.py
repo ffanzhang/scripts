@@ -1,4 +1,8 @@
-from html.parser import HTMLParser
+import sys
+if sys.version_info[0] >= 3:
+    from html.parser import HTMLParser
+else:
+    from HTMLParser import HTMLParser
 
 class FormExtractor(HTMLParser):
     _attrs = {}

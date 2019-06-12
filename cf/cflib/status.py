@@ -2,8 +2,11 @@ import requests
 import sys
 from time import sleep
 from threading import Timer
-import queue
 from .config import STATUS_URL
+if sys.version_info[0] >= 3:
+    import queue
+else:
+    import Queue as queue
 
 class Scheduler():
     _handle = None
