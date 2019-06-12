@@ -12,7 +12,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-cfg", "--configure", help="Use a configuration file instead, this overrides all the other options.")
     parser.add_argument("-u", "--username", help="cf handle")
-    parser.add_argument("-m", "--mode", default="p", help="optional, by default problem set, problem=p, gym=g, contest=c")
+    parser.add_argument("-m", "--mode", default="p", help="optional, by default problem set, problem=p, gym=g, contest=c, acm=a")
     parser.add_argument("-l", "--language_code", help="cf language code if you know it")
     parser.add_argument("-f", "--file_name", help="file name to be submitted")
     parser.add_argument("-i", "--id", help="cf problem set id, gym id or contest id")
@@ -46,7 +46,7 @@ if __name__ == "__main__":
                 print("Failed to guess a problem set id")
             else:
                 print("Using id = {0}".format(id))
-        if args.index is None:
+        if args.index is None and args.mode != 'a':
             print("Problem index not specified, guessing")
             index = utils.guess_problem_index(args.file_name)
             if index is None:
@@ -77,6 +77,9 @@ if __name__ == "__main__":
             auth.save_last_user(args.username)
         else:
             session = auth.session_from_cookies(cookies)
+
+        if args.mode == 'a':
+            id = 99999
 
         auth.submit(session, id, index, language_code, file_name, args.mode) 
         status.get_submit_status(args.username, 1) 

@@ -92,6 +92,8 @@ def submit(session, id, index, lang_id, file_name, mode):
         url = SUBMIT_URL
     elif mode == 'g':
         url = GYM_SUBMIT_URL.format(id)
+    elif mode == 'a':
+        url = ACM_SUBMIT_URL.format(index)
     else:
         url = CONTEST_SUBMIT_URL.format(id)
 
@@ -100,9 +102,13 @@ def submit(session, id, index, lang_id, file_name, mode):
 
     if mode == 'p':
         submit_content['submittedProblemCode'] = id + index 
+    elif mode == 'a':
+        submit_content['contestId'] = 99999
+        submit_content['submittedProblemIndex'] = index
     else:
         submit_content['submittedProblemIndex'] = index
 
     submit_content['programTypeId'] = lang_id 
     submit_content['source'] = open(file_name, 'r') 
+    print(submit_content)
     session.post(url, files=submit_content)
