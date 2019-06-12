@@ -110,5 +110,4 @@ def submit(session, id, index, lang_id, file_name, mode):
 
     submit_content['programTypeId'] = lang_id 
     submit_content['source'] = open(file_name, 'r') 
-    print(submit_content)
     session.post(url, files=submit_content)

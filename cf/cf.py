@@ -39,14 +39,14 @@ if __name__ == "__main__":
             auth.clear_cookies()
 
         id, index, file_name = args.id, args.index, args.file_name
-        if args.id == None:
+        if args.id == None and args.mode != 'a':
             print("Problem set id not specified, guessing")
             id = utils.guess_problem_set_id(args.file_name)
             if id is None:
                 print("Failed to guess a problem set id")
             else:
                 print("Using id = {0}".format(id))
-        if args.index is None and args.mode != 'a':
+        if args.index is None:
             print("Problem index not specified, guessing")
             index = utils.guess_problem_index(args.file_name)
             if index is None:
