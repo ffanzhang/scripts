@@ -8,7 +8,7 @@ install:
 		echo 'export PATH=$$PATH:~/.local/bin' >> ~/.bashrc;\
 	fi
 clean:
-	rm -f ~/.local/bin/cf
+	rm ~/.local/bin/cf
 	yes | pip3 uninstall cflib
 test:
 	python3 -m unittest discover
@@ -21,7 +21,7 @@ install2:
 		echo 'export PATH=$$PATH:~/.local/bin' >> ~/.bashrc;\
 	fi
 clean2:
-	rm -f ~/.local/bin/cf
+	rm ~/.local/bin/cf
 	yes | pip uninstall cflib
 test2:
 	python -m unittest discover
