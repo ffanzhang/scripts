@@ -60,15 +60,15 @@ if __name__ == "__main__":
             sys.stdout.write("Failed to guess a problem set id")
             sys.exit(1)
         else:
-            sys.stdout.write("Using id = {0}".format(settings["id"]))
+            sys.stdout.write("Using id = {0}\n".format(settings["id"]))
     if settings.get("index") is None:
-        sys.stdout.write("Problem index not specified, guessing")
+        sys.stdout.write("Problem index not specified, guessing\n")
         settings["index"] = utils.guess_problem_index(settings["file_name"])
         if settings.get("index") is None:
             sys.stdout.write("Failed to guess a problem set id\n")
             sys.exit(1)
         else:
-            sys.stdout.write("Using index = {0}".format(settings["index"]))
+            sys.stdout.write("Using index = {0}\n".format(settings["index"]))
     for item in ["id", "index", "file_name"]:
         if settings.get(item) is None:
             parser.sys.stdout.write_help()
