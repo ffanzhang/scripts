@@ -48,7 +48,7 @@ def valid_cookies(cookies):
         return False
     try:
         cookie_jar = cookies.get_dict()
-        return 'X-User-Sha1' in cookie_jar
+        return 'X-User-Sha1' in cookie_jar and not cookies_expired(cookies)
     except:
         return False
     return False
