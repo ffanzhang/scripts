@@ -107,7 +107,7 @@ if __name__ == "__main__":
             sys.stdout.write("Error recovering session\n")
             sys.exit(1)
     else:
-        # re-enter credentials if cookies
+        # re-enter credentials if cookies expired or not valid
         try:
             auth.clear_cookies()
             session = auth.login(settings["username"], getpass.getpass())
