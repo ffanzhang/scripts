@@ -1,0 +1,8 @@
+# append into /etc/network/interface
+auto $interface
+iface $interface inet static
+netmask 255.255.255.0 
+gateway 192.168.0.1
+address 192.168.0.123
+wpa-essid #  ## #
+wpa-psk   ## ## ##

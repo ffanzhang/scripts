@@ -1,0 +1,4 @@
+phy#0
+	Interface wlan0
+phy#1
+	Interface wlan1

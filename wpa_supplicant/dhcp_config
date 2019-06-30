@@ -1,0 +1,7 @@
+# append into /etc/network/interface
+auto $interface
+iface $interface inet dhcp 
+wireless-essid $ssid
+pre-up wpa_supplicant -B -D nl80211,wext -i $interface -c /etc/wpa_supplicant/wpa_supplicant.conf
+post-up route add default gateway 192.168.0.1 $interface
+post-down killall -q wpa_supplicant
