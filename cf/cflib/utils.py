@@ -34,6 +34,8 @@ if __name__ == "__main__":
     assert guess_language_code("py")    == "7"
     assert guess_language_code("adfsadfasdf")  == "50"
     assert guess_problem_set_id("lsajf") == None
+    assert guess_problem_set_id("c.cc") == None 
     assert guess_problem_set_id("123123lsajf") == "123123"
     assert guess_problem_index("123123.cc") == None 
+    assert guess_problem_index("c.cc") == 'C'
     assert guess_problem_index("123123d.cc") == 'D'
