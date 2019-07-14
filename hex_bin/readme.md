@@ -1,1 +1,1 @@
-usage: python hex.py
+usage: python hex_bin.py

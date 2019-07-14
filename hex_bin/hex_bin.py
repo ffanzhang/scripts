@@ -39,39 +39,36 @@ class QuestionGenerator():
     def equals(self, a, b):
         return self._equals(a, b)
     
-def hex_bin_equals(a, b): 
+def bin_equals(a, b):
     try:
-        if a is None or b is None:
-            return False
-        m1 = re.search(r"\d+$", a)
-        m2 = re.search(r"\d+$", b)
-        if m1 is None or m2 is None:
-            return False
-        elif m1.group(0) != m2.group(0):
-            return False
-        else:
-            return True
+        return int(a, 2) == int(b, 2)
+    except:
+        return False
+
+def hex_equals(a, b):
+    try:
+        return int(a, 16) == int(b, 16)
     except:
         return False
 
 def gen_hex_bin_question():
     num = random.randrange(1, 16)
-    q = str(hex(num))
-    a = str(bin(num))
+    q = str(hex(num))[2:]
+    a = str(bin(num))[2:]
     return q, a
 
 def gen_bin_hex_question():
     num = random.randrange(1, 16)
-    q = str(bin(num))
-    a = str(hex(num))
+    q = str(bin(num))[2:]
+    a = str(hex(num))[2:]
     return q, a 
 
 if __name__ == "__main__":
     random.seed(datetime.now())
     last_question = None
     new_question = None
-    hex_bin_gen = QuestionGenerator(gen_hex_bin_question, hex_bin_equals)
-    bin_hex_gen = QuestionGenerator(gen_bin_hex_question, hex_bin_equals)
+    hex_bin_gen = QuestionGenerator(gen_hex_bin_question, bin_equals)
+    bin_hex_gen = QuestionGenerator(gen_bin_hex_question, hex_equals)
     host1 = Host(hex_bin_gen, "hex to bin")
     host2 = Host(bin_hex_gen, "bin to hex")
     while True:
